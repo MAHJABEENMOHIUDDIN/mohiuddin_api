@@ -1,5 +1,5 @@
 
-python-3.9.13
+python3.9
 
 scikit-learn==1.2.2
 
