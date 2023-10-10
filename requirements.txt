@@ -7,3 +7,7 @@ fastapi==0.88.0
 uvicorn==0.20.0
 
 joblib==1.2.0
+
+gunicorn==21.2.0
+
+heroku==0.1.4
