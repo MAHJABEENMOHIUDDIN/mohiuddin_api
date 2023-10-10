@@ -12,3 +12,5 @@ joblib==1.2.0
 gunicorn==21.2.0
 
 heroku==0.1.4
+
+numpy==1.24.1
