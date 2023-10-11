@@ -8,5 +8,5 @@ idna==2.8
 pydantic==1.6.2
 starlette==0.14.2
 uvicorn==0.11.7
-uvloop==0.12.2
+uvloop>=0.14.0
 websockets==8
