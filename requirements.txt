@@ -12,3 +12,4 @@ uvloop>=0.14.0
 websockets==8
 joblib==1.1.1
 pandas==1.3.0
+gunicorn==21.2.0
