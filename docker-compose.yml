@@ -1,0 +1,13 @@
+version: '3'
+services:
+    core_api:
+       build: .
+       platform: linux/amd64
+       container_name: "texas-store-sales_predictive_api"
+       ports:
+            - "8080:15400"
+       volumes:
+            - ./app/:/app
+
+
+
