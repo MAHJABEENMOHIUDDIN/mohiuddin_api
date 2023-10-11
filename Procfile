@@ -1,1 +1,1 @@
-web: gunicorn -w 4 -k uvicorn.workers.Uvicornworker main:app
+web:"gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-c", "/gunicorn_conf.py", "main:app"

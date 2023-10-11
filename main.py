@@ -28,7 +28,7 @@ def format_features(date: str, Day_of_sales: int,store_id: str,item_id:str, even
 @app.get("/")
 def read_root():
     return {"Description": """A predictive model uses a machine learning algorithm to accurately predict the sales revenue for a given item in a specific store at a given date. A forecasting model using a time-series analysis algorithm that will forecast the total sales revenue across all stores and items for the next 7 days.""",
-           "List of Endpoints": """prediction endpoint: https://mahjabeen-fastapi.herokuapp.com/stores/sales/prediction,Forcasting endpoint: https://mahjabeen-fastapi.herokuapp.com/forecast/, HealthCheck EndPoint:https://mahjabeen-fastapi.herokuapp.com/health/""",
+           "List of Endpoints": """prediction endpoint: https://mahjabeen-fastapi-3ae9846e27fc.herokuapp.com/stores/sales/prediction,Forcasting endpoint: https://mahjabeen-fastapi-3ae9846e27fc.herokuapp.com/forecast/, HealthCheck EndPoint:https://mahjabeen-fastapi-3ae9846e27fc.herokuapp.com/health/""",
            "Expected Input parameters for predictive model": """date=2011-02-06,Day_of_sales=9,store_id=TX_1,item_id=HOUSEHOLD_1_537,event_name=SuperBowl,event_type=Sporting,Sales_value=3.0,sell_price=15.98,revenue=47.94""",
            "Expected OutPut": "[47.80684273195466]",
            "GitHub Link": "https://github.com/MAHJABEENMOHIUDDIN/fastapi.git"}
