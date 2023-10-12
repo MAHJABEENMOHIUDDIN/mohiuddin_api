@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Form
 from starlette.responses import JSONResponse
 from joblib import load
 import pandas as pd
+from datetime import datetime as dt
 import os
 
 app = FastAPI()
@@ -80,11 +81,40 @@ logging.debug("Debug message")
 model_file_path_api1 = '/machinelearning_as_a_service/texas_store_sales_predictive_api/models/arima_forecasting_2.joblib'
 arima_model = load(model_file_path_api1)
  
-@app.get("/forecast/")
-async def forecast_sales():
-      forecast_data = {
-            "message": "The forecast of the next 7 days sales are:",
-            "forecast": arima_model.values.tolist()
-        }
+week_aggregate = {
+    "2011-01-29": {"Sum_of_sales_revenue_in_millions": 25.684828},
+    "2011-01-30": {"Sum_of_sales_revenue_in_millions": 24.405627},
+    "2011-01-31": {"Sum_of_sales_revenue_in_millions": 13.529582},
+    "2011-02-01": {"Sum_of_sales_revenue_in_millions": 15.617118},
+}
+@app.post("/sales/national")
+async def predict_national_sales(
+    date: str = Form(...),
+):
+    date_obj = dt.strptime(date, "%Y-%m-%d")
 
-      return forecast_data
+    if date in week_aggregate:
+        Revenue_previous_7_days = 0  # Replace with your logic to calculate 7-day revenue
+        Revenue_previous_14_days = 0  # Replace with your logic to calculate 14-day revenue
+        Revenue_previous_28_days = 0  # Replace with your logic to calculate 28-day revenue
+    else:
+        Revenue_previous_7_days = 0
+        Revenue_previous_14_days = 0
+        Revenue_previous_28_days = 0
+
+    national_sales_pipeline = joblib.load("national_sales_pipeline.joblib")
+
+    input_data = [
+        Revenue_previous_7_days, Revenue_previous_14_days, Revenue_previous_28_days
+    ]
+
+    # Make predictions using the loaded model
+    sales_prediction = national_sales_pipeline.predict([input_data])[0]
+
+    return {"sales_prediction": sales_prediction}
+
+
+
+
+
+
