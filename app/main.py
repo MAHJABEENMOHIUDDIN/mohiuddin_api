@@ -102,14 +102,14 @@ async def predict_national_sales(
         Revenue_previous_14_days = 0
         Revenue_previous_28_days = 0
 
-    national_sales_pipeline = joblib.load("national_sales_pipeline.joblib")
+    arima_model = load("national_sales_pipeline.joblib")
 
     input_data = [
         Revenue_previous_7_days, Revenue_previous_14_days, Revenue_previous_28_days
     ]
 
     # Make predictions using the loaded model
-    sales_prediction = national_sales_pipeline.predict([input_data])[0]
+    sales_prediction =  arima_model.predict([input_data])[0]
 
     return {"sales_prediction": sales_prediction}
 
